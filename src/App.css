@@ -1,0 +1,100 @@
+a {
+  padding: 0 5px;
+  color: #1f1f1f !important;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #000000 !important
+}
+
+a:nth-of-type(2) {
+  border-left: 1px solid #9c9c9c;
+}
+
+.MenuNav-Container {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+.Menu-Container {
+  height: 65px;
+  background: #ffffff;
+  border-bottom: 1px solid #b5b5b5;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  padding: 20px
+}
+
+.Menu-Text-Logo {
+  color: #3d3d3d;
+  font-family: 'Pacifico', cursive;
+  font-size: 40px;
+  margin: 0;
+}
+
+.Menu-Button {
+  background: none;
+  border: none;
+
+}
+
+.Dropdown{
+  margin: 5px 20px;
+  display: inline-block;
+}
+
+.Dropdown-Content {
+  display: none
+}
+
+.Dropdown-Open-Button {
+  background: none;
+  border: none;
+
+}
+
+.Dropdown-button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Dropdown-button:hover {
+  background: #a8a8a8;
+  color: #000;
+}
+
+.Dropdown:hover .Dropdown-Content {
+  display: flex;
+  background: #1f1f1f;
+  border-radius: 8px;
+  flex-direction: column;
+  padding: 20px 0
+}
+
+
+.App-Container {
+  padding: 94px 0 0 0
+}
+
+.ShoppinCar-Tag {
+  position: fixed;
+  bottom: 0;
+  right: 60px;
+  width: 270px;
+  height: 35px;
+  background: #fff;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid #b5b5b5
+}
+
+.ShoppinCar-Tag:hover {
+  background: #c7c7c7;
+}
