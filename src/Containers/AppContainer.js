@@ -1,10 +1,15 @@
 import React,{Component} from 'react';
-import { BrowserHistory } from 'react-router-dom';
-import { Icon,Dropdown,} from 'semantic-ui-react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Icon,Dropdown,Search } from 'semantic-ui-react';
 
+
+// Dropdown Component
 import Tecnologia from '../Components/Dropdown/Tecnologia';
 import Deportes from '../Components/Dropdown/Deportes';
 import Musica from '../Components/Dropdown/Musica';
+
+// Pages
+import Index from '../Pages/Index';
 
 class AppContainer extends Component{
 
@@ -12,7 +17,14 @@ class AppContainer extends Component{
     Dropdown: false,
     Tecnologia: false,
     Deportes: false,
-    Musica: false
+    Musica: false,
+    tagHeight: 0
+  }
+
+  openShoppingCar = ()=> {
+    this.setState({
+      tagHeight: this.state.tagHeight===0 ? 500 : 0
+    })
   }
 
   render(){
@@ -21,6 +33,7 @@ class AppContainer extends Component{
         <div className="MenuNav-Container" >
           <div className="Menu-Container" >
             <h1 className="Menu-Text-Logo" >Cronew</h1>
+            <Search />
             <div className="Menu-Buttons-Container" >
               <a className="Menu-Button" >Crea tu cuenta</a>
               <a className="Menu-Button" >Ingresa</a>
@@ -63,15 +76,22 @@ class AppContainer extends Component{
         </div>
 
         <div className="App-Container" >
-
+          <Router>
+            <Route exact path="/" component={Index} />
+          </Router>
         </div>
 
-        <button className="Sell-Button" >
+        <span className="Sell-Button" >
           Vender
-        </button>
+        </span>
 
-        <div className="ShoppinCar-Tag" onClick={()=> alert("CLICK")} >
-          <p>Carrito de Compras</p>
+        <div className="ShoppinCar-Container" >
+          <div className="ShoppinCar-Tag" onClick={()=>this.openShoppingCar()} >
+            <p>Carrito de Compras</p>
+          </div>
+          <div className="ShoppingList" style={{height: this.state.tagHeight}} >
+
+          </div>
         </div>
       </div>
     );

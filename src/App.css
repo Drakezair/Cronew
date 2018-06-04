@@ -1,3 +1,5 @@
+/* AppContainer */
+
 a {
   padding: 0 5px;
   color: #1f1f1f !important;
@@ -15,7 +17,9 @@ a:hover {
 .MenuNav-Container {
   position: fixed;
   top: 0;
-  width: 100%
+  width: 100%;
+  background: #a9f0da;
+  z-index: 2
 }
 
 .Menu-Container {
@@ -73,19 +77,39 @@ a:hover {
   position:fixed;
   left: 20px;
   bottom: 20px;
-  width: 80px;
+  width: 90px;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #ffffff;
-  border-radius: 40px
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px
 }
 
-.ShoppinCar-Tag {
+/* Widget */
+
+.Sell-Button:active {
+  transform: scale(.9,.9);
+}
+
+
+.ShoppinCar-Container {
   position: fixed;
   bottom: 0;
   right: 60px;
+}
+
+.ShoppingList {
+  border-left: 1px solid #b5b5b5;
+  border-right: 1px solid #b5b5b5;
+  background: #f1f1f1;
+  height: 100%;
+}
+
+.ShoppinCar-Tag {
   width: 270px;
   height: 35px;
   background: #fff;
@@ -94,8 +118,59 @@ a:hover {
   display:flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .ShoppinCar-Tag:hover {
   background: #c7c7c7;
+}
+
+
+/* Index */
+
+/* SLIDER */
+.imgSlide {
+  width: 100%;
+  height: 500px;
+  background-image: url('./assets/slideshow.jpeg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.imgSlide1 {
+  width: 100%;
+  height: 500px;
+  background-image: url('./assets/slideshow_1.jpeg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.imgSlide2 {
+  width: 100%;
+  height: 500px;
+  background-image: url('./assets/slideshow_2.jpeg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.nextSlide {
+  position: absolute;
+  right: 0;
+  top: 200px;
+  font-size: 40px !important;
+}
+
+.nextSlide:active {
+  color: #ffffff !important;
+}
+
+.backSlide {
+  position: absolute;
+  left: 0;
+  top: 200px;
+  font-size: 40px !important;
+}
+
+.backSlide:active {
+  color: #ffffff !important;
 }
