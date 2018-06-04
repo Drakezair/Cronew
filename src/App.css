@@ -8,7 +8,7 @@ a:hover {
   color: #000000 !important
 }
 
-a:nth-of-type(2) {
+.Menu-Button:nth-of-type(2) {
   border-left: 1px solid #9c9c9c;
 }
 
@@ -42,46 +42,44 @@ a:nth-of-type(2) {
 
 }
 
+
 .Dropdown{
-  margin: 5px 20px;
+  margin: 5px 5px 5px 40px;
   display: inline-block;
 }
 
-.Dropdown-Content {
-  display: none
+.Dropdown-SubContent {
+  padding: 10px;
+  background: #fff;
+  height: 500px;
+  width: 800px
 }
 
-.Dropdown-Open-Button {
-  background: none;
-  border: none;
-
+.Grid-SubContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-row: auto 1fr;
+  grid-gap: 20px
 }
-
-.Dropdown-button {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.Dropdown-button:hover {
-  background: #a8a8a8;
-  color: #000;
-}
-
-.Dropdown:hover .Dropdown-Content {
-  display: flex;
-  background: #1f1f1f;
-  border-radius: 8px;
-  flex-direction: column;
-  padding: 20px 0
-}
-
 
 .App-Container {
   padding: 94px 0 0 0
+
+}
+
+.Sell-Button {
+  background-color: #0CE8CC;
+  border: none;
+  position:fixed;
+  left: 20px;
+  bottom: 20px;
+  width: 80px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  border-radius: 40px
 }
 
 .ShoppinCar-Tag {
@@ -92,7 +90,10 @@ a:nth-of-type(2) {
   height: 35px;
   background: #fff;
   border-radius: 8px 8px 0 0;
-  border: 1px solid #b5b5b5
+  border: 1px solid #b5b5b5;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ShoppinCar-Tag:hover {
