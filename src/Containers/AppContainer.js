@@ -18,12 +18,14 @@ class AppContainer extends Component{
     Tecnologia: false,
     Deportes: false,
     Musica: false,
-    tagHeight: 0
+    tagHeight: 0,
+    tagColor: null
   }
 
   openShoppingCar = ()=> {
     this.setState({
-      tagHeight: this.state.tagHeight===0 ? 500 : 0
+      tagHeight: this.state.tagHeight===0 ? 500 : 0,
+      tagColor: this.state.tagColor===null ? {background:'#a9f0da'} : null
     })
   }
 
@@ -86,7 +88,9 @@ class AppContainer extends Component{
         </span>
 
         <div className="ShoppinCar-Container" >
-          <div className="ShoppinCar-Tag" onClick={()=>this.openShoppingCar()} >
+          <div className="ShoppinCar-Tag" onClick={()=>this.openShoppingCar()}
+            style={this.state.tagColor}
+          >
             <p>Carrito de Compras</p>
           </div>
           <div className="ShoppingList" style={{height: this.state.tagHeight}} >
