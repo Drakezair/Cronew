@@ -6,11 +6,24 @@ import { Icon,Divider } from 'semantic-ui-react';
 
 import Card from '../Components/Card/Card';
 
+// IMAGES
+
+import platzi from '../assets/Platzi.png';
+
 class Index extends Component {
 
   state={
     LisPosition: 0
   }
+
+  //REDES SOCIALES
+
+  twitter = "https://twitter.com/Drakezair1";
+  github = "https://github.com/Drakezair";
+  instagram = 'https://www.instagram.com/drakezair/';
+  platziUrl = 'https://platzi.com/@Drakezair/';
+
+  // FUNCIONES
 
   Next = () => this.refs.SlideShow.slickNext()
   Back = () => this.refs.SlideShow.slickPrev()
@@ -35,6 +48,10 @@ class Index extends Component {
       left: backPosition ,
       behavior: 'smooth'
     })
+  }
+
+  toUrl(url) {
+    window.open(url, '_self')
   }
 
   render(){
@@ -92,9 +109,43 @@ class Index extends Component {
           </div>
         </section>
 
-        <section className='Footer-Container' >
-
-        </section>
+        <footer className='Footer' >
+          <div className="Footer-Container">
+            <div className="footer-left">
+              <div className="footerTag">
+                <span className="iconPlace">
+                  <Icon name='map marker alternate' />
+                </span>
+                <p>21 Revolution Street. <br/><strong>Paris, France.</strong></p>
+              </div>
+              <div className="footerTag">
+                <span className="iconPlace">
+                  <Icon name='phone' />
+                </span>
+                <strong>+1 555 123456</strong>
+              </div>
+              <div className="footerTag">
+                <span className="iconPlace">
+                  <Icon name='mail' />
+                </span>
+                <strong >andradex.js07@gmail.com</strong>
+              </div>
+            </div>
+            <div className="footer-right">
+              <h3>About company.</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim at dolores
+                eius magnam dolorum nostrum sunt cumque error sint corporis, rem iste excepturi
+                provident doloremque, nemo nulla! Sit, magnam, consectetur.
+              </p>
+              <div className="buttonsContain">
+                <div className="socialButton" onClick={()=>this.toUrl(this.github)}><Icon name="github" /></div>
+                <div className="socialButton" onClick={()=>this.toUrl(this.instagram)}><Icon name="instagram" /></div>
+                <div className="socialButton" onClick={()=>this.toUrl(this.twitter)}><Icon name="twitter" /></div>
+                <div className="socialButton" onClick={()=>this.toUrl(this.platziUrl)}><img src={platzi}/></div>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     )
   }

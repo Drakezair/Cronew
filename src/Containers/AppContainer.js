@@ -24,8 +24,8 @@ class AppContainer extends Component{
   openShoppingCar = ()=> {
     var elmnt = this.refs.ShoppingList;
     var tag = this.refs.tag
+    elmnt.classList.contains('ShoppingListOpen') ? elmnt.classList.add('ShoppingListClose') : elmnt.classList.remove('ShoppingListClose');
     elmnt.classList.toggle('ShoppingListOpen');
-    elmnt.classList.toggle('ShoppingListClose');
     tag.classList.toggle('ShoppingTagActive')
   }
 
@@ -37,7 +37,7 @@ class AppContainer extends Component{
         <div className="MenuNav-Container" >
           <div className="Menu-Container" >
             <h1 className="Menu-Text-Logo" >Cronew</h1>
-            <Search />
+            <Search noResultsMessage='No hay resultados' />
             <div className="Menu-Buttons-Container" >
               <a className="Menu-Button" >Crea tu cuenta</a>
               <a className="Menu-Button" >Ingresa</a>
@@ -46,7 +46,7 @@ class AppContainer extends Component{
           <span className="Dropdown-button"
             onMouseEnter={()=> this.handleDropdown()}
             onMouseOver={()=> console.log('hola')}
-          >Categorias <Icon name="down" /></span>
+          >Categorias <Icon name="caret down" size='large' /></span>
           {
             this.state.Dropdown ?
               <div className="Dropdown-List"
@@ -61,6 +61,7 @@ class AppContainer extends Component{
                   onMouseLeave={()=>this.setState({Tecnologia: false})}
                 >
                   Tecnologia
+                  <Icon name="caret right" size="large"/>
                   {
                     this.state.Tecnologia ? <Tecnologia /> : null
                   }
@@ -71,6 +72,7 @@ class AppContainer extends Component{
                   onMouseLeave={()=>this.setState({Deportes: false})}
                 >
                   Deportes
+                  <Icon name="caret right" size="large"/>
                   {
                     this.state.Deportes ? <Deportes /> : null
                   }
@@ -81,6 +83,7 @@ class AppContainer extends Component{
                   onMouseLeave={()=>this.setState({Musica: false})}
                 >
                   Musica
+                  <Icon name="caret right" size="large"/>
                   {
                     this.state.Musica ? <Musica /> : null
                   }
@@ -91,7 +94,9 @@ class AppContainer extends Component{
 
             /* <div className="Dropdown-Component"></div> */
           }
-          <a>Ofertas</a>
+          <a>Ofertas de la semana</a>
+          <a>Tiendas oficiales</a>
+          <a>Tu historial</a>
           <a>Tus Compras</a>
         </div>
 
@@ -109,8 +114,8 @@ class AppContainer extends Component{
           <div className="ShoppinCar-Tag" ref='tag' onClick={()=>this.openShoppingCar()} >
             <p>Carrito de Compras</p>
           </div>
-          <div className="ShoppingList ShoppingListClose" ref='ShoppingList' >
-            <div className="list">
+          <div className="ShoppingList" ref='ShoppingList' >
+            <div className="listCar">
               <Item />
               <Item />
               <Item />
