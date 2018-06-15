@@ -5,10 +5,10 @@ class Tecnologia extends Component {
 
   render(){
     return(
-      <div className="Dropdown-SubContent" >
+      <div className="Dropdown-Component" >
         <h1>Tecnología</h1>
         <Divider />
-        <div className="Grid-SubContent" >
+        <div className="Grid-Dropdown-Component" >
           <div>
             <h3>Celulares y Telefonos</h3>
             <List>
@@ -33,7 +33,7 @@ class Tecnologia extends Component {
             </List>
           </div>
           <div style={{gridColumn: '1 / span 3'}} >
-            <img src={require('../../assets/tecnologia.jpeg')} style={{width: '100%',height: 300}} />
+            <img src={require('../../assets/tecnologia.jpeg')} style={{width: 778,height: 300}} />
           </div>
         </div>
       </div>

@@ -1,14 +1,14 @@
 import React,{Component} from 'react';
-import {Header, Divider, List} from 'semantic-ui-react';
+import { Divider, List} from 'semantic-ui-react';
 
 class Musica extends Component {
 
   render(){
     return(
-      <div className="Dropdown-SubContent" >
+      <div className="Dropdown-Component" >
         <h1>Instrumentos Musicales</h1>
         <Divider />
-        <div className="Grid-SubContent" >
+        <div className="Grid-Dropdown-Component" >
           <div>
             <h3>Guitarras</h3>
             <List>
@@ -32,7 +32,7 @@ class Musica extends Component {
             </List>
           </div>
           <div style={{gridColumn: '1 / span 3'}} >
-            <img src={require('../../assets/Musica.jpeg')} style={{width: '100%',height: 300}} />
+            <img src={require('../../assets/Musica.jpeg')} style={{width: 778 ,height: 300}} />
           </div>
         </div>
       </div>

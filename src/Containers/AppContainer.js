@@ -7,6 +7,7 @@ import { Icon,Dropdown,Search } from 'semantic-ui-react';
 import Tecnologia from '../Components/Dropdown/Tecnologia';
 import Deportes from '../Components/Dropdown/Deportes';
 import Musica from '../Components/Dropdown/Musica';
+import Item from '../Components/Card/Item';
 
 // Pages
 import Index from '../Pages/Index';
@@ -18,16 +19,17 @@ class AppContainer extends Component{
     Tecnologia: false,
     Deportes: false,
     Musica: false,
-    tagHeight: 0,
-    tagColor: null
   }
 
   openShoppingCar = ()=> {
-    this.setState({
-      tagHeight: this.state.tagHeight===0 ? 500 : 0,
-      tagColor: this.state.tagColor===null ? {background:'#a9f0da'} : null
-    })
+    var elmnt = this.refs.ShoppingList;
+    var tag = this.refs.tag
+    elmnt.classList.toggle('ShoppingListOpen');
+    elmnt.classList.toggle('ShoppingListClose');
+    tag.classList.toggle('ShoppingTagActive')
   }
+
+  handleDropdown = ()=> this.setState({Dropdown: !this.state.Dropdown});
 
   render(){
     return(
@@ -41,38 +43,54 @@ class AppContainer extends Component{
               <a className="Menu-Button" >Ingresa</a>
             </div>
           </div>
+          <span className="Dropdown-button"
+            onMouseEnter={()=> this.handleDropdown()}
+            onMouseOver={()=> console.log('hola')}
+          >Categorias <Icon name="down" /></span>
+          {
+            this.state.Dropdown ?
+              <div className="Dropdown-List"
+                onMouseLeave={()=> this.handleDropdown()}
+              >
+                <div className="dot" />
 
-          <Dropdown text="Categorias" pointing='top left' className="Dropdown"  open={this.state.Dropdown} onMouseEnter={()=>this.setState({Dropdown:true})} >
-            <Dropdown.Menu onMouseLeave={()=>this.setState({Dropdown: false})} >
-              <Dropdown text='Tecnología' pointing='left' className='link item'
-                open={this.state.Tecnologia}
-                onMouseEnter={()=>this.setState({Tecnologia: true})}
-                onMouseLeave={()=>this.setState({Tecnologia: false})}
-              >
-                <Dropdown.Menu>
-                  <Tecnologia />
-                </Dropdown.Menu>
-              </Dropdown>
-              <Dropdown text='Deportes y Aire Libre' pointing='left' className='link item'
-                open={this.state.Deportes}
-                onMouseEnter={()=>this.setState({Deportes: true})}
-                onMouseLeave={()=>this.setState({Deportes: false})}
-              >
-                <Dropdown.Menu>
-                  <Deportes />
-                </Dropdown.Menu>
-              </Dropdown>
-              <Dropdown text='Instrumentos Musicales' pointing='left' className='link item'
-                open={this.state.Musica}
-                onMouseEnter={()=>this.setState({Musica: true})}
-                onMouseLeave={()=>this.setState({Musica: false})}
-              >
-                <Dropdown.Menu>
-                  <Musica />
-                </Dropdown.Menu>
-              </Dropdown>
-            </Dropdown.Menu>
-          </Dropdown>
+
+                <span
+                  className="Dropdown-Span"
+                  onMouseEnter={()=>this.setState({Tecnologia: true})}
+                  onMouseLeave={()=>this.setState({Tecnologia: false})}
+                >
+                  Tecnologia
+                  {
+                    this.state.Tecnologia ? <Tecnologia /> : null
+                  }
+                </span>
+                <span
+                  className="Dropdown-Span"
+                  onMouseEnter={()=>this.setState({Deportes: true})}
+                  onMouseLeave={()=>this.setState({Deportes: false})}
+                >
+                  Deportes
+                  {
+                    this.state.Deportes ? <Deportes /> : null
+                  }
+                </span>
+                <span
+                  className="Dropdown-Span"
+                  onMouseEnter={()=>this.setState({Musica: true})}
+                  onMouseLeave={()=>this.setState({Musica: false})}
+                >
+                  Musica
+                  {
+                    this.state.Musica ? <Musica /> : null
+                  }
+                </span>
+              </div>
+            :
+            null
+
+            /* <div className="Dropdown-Component"></div> */
+          }
           <a>Ofertas</a>
           <a>Tus Compras</a>
         </div>
@@ -88,13 +106,19 @@ class AppContainer extends Component{
         </span>
 
         <div className="ShoppinCar-Container" >
-          <div className="ShoppinCar-Tag" onClick={()=>this.openShoppingCar()}
-            style={this.state.tagColor}
-          >
+          <div className="ShoppinCar-Tag" ref='tag' onClick={()=>this.openShoppingCar()} >
             <p>Carrito de Compras</p>
           </div>
-          <div className="ShoppingList" style={{height: this.state.tagHeight}} >
-
+          <div className="ShoppingList ShoppingListClose" ref='ShoppingList' >
+            <div className="list">
+              <Item />
+              <Item />
+              <Item />
+            </div>
+            <div className="checkList">
+              Total: 1.700$
+              <span>Comprar</span>
+            </div>
           </div>
         </div>
       </div>

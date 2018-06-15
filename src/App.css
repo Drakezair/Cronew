@@ -27,12 +27,13 @@
 
 a {
   padding: 0 5px;
-  color: #1f1f1f !important;
+  color: #373737 !important;
   cursor: pointer;
 }
 
 a:hover {
-  color: #000000 !important
+  color: #000000 !important;
+  font-weight:bold;
 }
 
 .Menu-Button:nth-of-type(2) {
@@ -43,19 +44,19 @@ a:hover {
   position: fixed;
   top: 0;
   width: 100%;
-  background: #a9f0da;
+  background: #ffffff;
+  border-bottom: 1px solid #b5b5b5;
   z-index: 2
 }
 
 .Menu-Container {
   height: 65px;
   background: #ffffff;
-  border-bottom: 1px solid #b5b5b5;
   display: flex;
   flex-direction: row;
   justify-content:space-between;
   align-items: center;
-  padding: 20px
+  padding: 0 40px
 }
 
 .Menu-Text-Logo {
@@ -71,27 +72,103 @@ a:hover {
 
 }
 
-
-.Dropdown{
-  margin: 5px 5px 5px 40px;
-  display: inline-block;
+.Dropdown-button {
+  margin: 0 0 0 40px;
+  cursor: pointer;
 }
 
-.Dropdown-SubContent {
+.dot {
+  height: 15px;
+  width: 15px;
+  background: #343434;
+  transform: rotateZ(45deg);
+  position: absolute;
+  top: -5px;
+  left: 70px;
+  box-shadow: -1px -1px #000000;
+}
+
+.Dropdown-List {
+  position: fixed;
+  width:200px;
+  background: #343434;
+  border-radius: 8px;
+  border: 1px #9d9d9d solid;
+  margin-left: 40px;
+  margin-top: 5px;
+  animation-name: openDown;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  display: flex;
+  flex-direction: column;
+}
+
+
+@keyframes openDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: 500px;
+    box-shadow: 0 0 10px #000;
+  }
+}
+
+.Dropdown-Component {
   padding: 10px;
+  overflow: hidden;
   background: #fff;
-  height: 500px;
-  width: 800px
+  height: 498px;
+  position: absolute;
+  left: 190px;
+  top: 0;
+  border: 1px solid #9d9d9d;
+  border-left: none;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  animation-name: dropdownComponent;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
 }
 
-.Grid-SubContent {
+@keyframes dropdownComponent {
+  from {
+    width: 0
+  }
+  to{
+    width: 800px;
+    box-shadow: 0 0 10px #000;
+  }
+}
+
+.Dropdown-List .Dropdown-Span:nth-of-type(1){
+  margin-top: 30px;
+}
+
+.Dropdown-Span {
+  height: 30px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  font-weight: bold;
+}
+
+.Dropdown-Span:hover {
+  background: #fff;
+  color: #1f1f1f;
+  font-weight: normal;
+}
+
+.Grid-Dropdown-Component {
   display: grid;
   grid-row-gap: 20px;
   grid-template: auto 1fr / 1fr 1fr 1fr ;
 }
 
 .App-Container {
-  padding: 94px 0 0 0
+  padding: 85px 0 0 0
 
 }
 
@@ -99,7 +176,7 @@ a:hover {
   background-color: #0CE8CC;
   border: none;
   position:fixed;
-  left: 20px;
+  left: 40px;
   bottom: 20px;
   width: 90px;
   height: 40px;
@@ -110,31 +187,27 @@ a:hover {
   border-radius: 40px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 20px
+  font-size: 20px;
+  box-shadow: 0 0 10px #3b3939;
 }
 
 /* Widget */
 
 .Sell-Button:active {
   transform: scale(.9,.9);
+  box-shadow: none;
 }
 
 
 .ShoppinCar-Container {
   position: fixed;
   bottom: 0;
-  right: 60px;
+  right: 40px;
 }
 
-.ShoppingList {
-  border-left: 1px solid #b5b5b5;
-  border-right: 1px solid #b5b5b5;
-  background: #f1f1f1;
-  height: 100%;
-}
 
 .ShoppinCar-Tag {
-  width: 270px;
+  width: 320px;
   height: 35px;
   background: #fff;
   border-radius: 8px 8px 0 0;
@@ -147,6 +220,93 @@ a:hover {
 
 .ShoppinCar-Tag:hover {
   background: #c7c7c7;
+}
+
+.ShoppingTagActive {
+  background: #0ee8cc !important;
+  color: white;
+  font-weight: bold;
+}
+.ShoppingList {
+  border-left: 1px solid #b5b5b5;
+  border-right: 1px solid #b5b5b5;
+  background: #f1f1f1;
+  height: 0;
+}
+
+.ShoppingListOpen {
+  animation: listOpen .8s forwards;
+}
+
+@keyframes listOpen {
+  from { height: 0}
+  to { height: 500px}
+}
+
+.ShoppingListClose {
+  animation: listClose .8s forwards;
+}
+
+@keyframes listClose {
+  from { height: 500px }
+  to { height: 0 }
+}
+
+.list {
+overflow-y: auto;
+height: 470px;
+}
+
+.checkList {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  height: 30px;
+  background: #0ee8cc;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #b5b5b5;
+  color: #fff;
+  font-weight: bold;
+}
+
+.itemContain {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #b5b5b5;
+  padding: 5px;
+  border-bottom: 1px solid #b5b5b5;
+  background: #e0dddd;
+  cursor: pointer;
+}
+
+.itemContain:hover {
+  background: #e6e3e3;
+}
+
+.itemImg {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #b5b5b5;
+  border-radius: 4px;
+}
+
+.itemButton {
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px
+}
+
+.itemButton:active {
+  transform: scale(0.9,0.9);
 }
 
 
@@ -164,7 +324,7 @@ a:hover {
 .imgSlide1 {
   width: 100%;
   height: 500px;
-  background-image: url('./assets/slideshow_1.jpeg');
+  background-image: url('./assets/slideshow_1.png');
   background-position: center center;
   background-size: cover;
 }
@@ -172,7 +332,7 @@ a:hover {
 .imgSlide2 {
   width: 100%;
   height: 500px;
-  background-image: url('./assets/slideshow_2.jpeg');
+  background-image: url('./assets/slideshow_2.png');
   background-position: center center;
   background-size: cover;
 }
@@ -236,6 +396,7 @@ a:hover {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  margin-top: 5px
 }
 
 .Descubre{
@@ -253,9 +414,19 @@ a:hover {
 }
 
 .Descubre:hover, .Descubre-large:hover {
-  box-shadow: 0 0 10px #6f6f6f
+  animation-name: descubreHover;
+  animation-duration: .4s;
+  animation-fill-mode: forwards;
 }
 
+@keyframes descubreHover {
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 0 0 10px #000
+  }
+}
 
 .Descubre-button {
   height: 40px;
@@ -267,7 +438,14 @@ a:hover {
 }
 
 .Descubre:hover .Descubre-button, .Descubre-large:hover .Descubre-button {
-  background: #147cdb
+  animation-name: botonHover;
+  animation-fill-mode: forwards;
+  animation-duration: .4s;
+}
+
+@keyframes botonHover {
+  from { background: #14b7db }
+  to { background: #147cdb }
 }
 
 /*Mas Vistos Index  */
@@ -275,17 +453,36 @@ a:hover {
 .Card-Contain-Index {
   width: 790px;
   margin: 40px auto 0;
+  position: relative;
 }
 
 .Card-List-Index {
-  display: grid;
-  grid-auto-flow: column;
-  width: 720px;
+  width: 700px;
   overflow: hidden;
   margin: auto;
-  grid-gap: 10px;
-  height: 380px;
-  padding: 5px 5px 0;
+  height: 365px;
+}
+
+.List-Contain-Index {
+  display: inline-flex;
+}
+
+.MasVisto-Button {
+  position: absolute;
+  top: 220px;
+  font-size: 30px !important;
+}
+
+.MasVisto-Button:active {
+  color: #c3c3c3
+}
+
+.MasVisto-Right {
+  right: 0;
+}
+
+.MasVisto-Left {
+  left: 0;
 }
 
 /* FOOTER */
@@ -301,21 +498,61 @@ a:hover {
 /* CARDS */
 
 .Card {
-  max-height: 315px;
-  width: 350px;
+  height: 300px;
+  width: 340px;
   background: #fff;
   border: 1px solid #d9d9d9;
   border-radius: 4px;
   overflow-y: hidden;
-  position: relative;
+  display: inline-block;
+  margin: 5px;
+  cursor: pointer;
 }
 
 .Card:hover {
-  max-height: 370px;
-  box-shadow: 0 0 10px #000
+
+  animation-name: example;
+  animation-duration: .7s;
+  animation-fill-mode: forwards;
 }
 
 .Card-Img {
   width: 100%;
-  height: 250px
+  height: 250px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.Card-Add {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 6px;
+  height: 30px;
+  width: 30px;
+  background: #62F2C6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+.Card-Add:active {
+  transform: scale(.9);
+}
+
+.Card-Add i {
+  font-size: 16px !important;
+  margin: 0 !important;
+}
+
+@keyframes example {
+    0%   {
+      height: 300px;
+      box-shadow: 0 0 0px #636363
+    }
+    100% {
+      height: 355px;
+      box-shadow: 0 0 10px #636363;
+    }
 }
