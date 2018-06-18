@@ -137,11 +137,11 @@ class Index extends Component {
                 eius magnam dolorum nostrum sunt cumque error sint corporis, rem iste excepturi
                 provident doloremque, nemo nulla! Sit, magnam, consectetur.
               </p>
-              <div className="buttonsContain">
-                <div className="socialButton" onClick={()=>this.toUrl(this.github)}><Icon name="github" /></div>
-                <div className="socialButton" onClick={()=>this.toUrl(this.instagram)}><Icon name="instagram" /></div>
-                <div className="socialButton" onClick={()=>this.toUrl(this.twitter)}><Icon name="twitter" /></div>
-                <div className="socialButton" onClick={()=>this.toUrl(this.platziUrl)}><img src={platzi}/></div>
+              <div className="buttonsContain NoSelection">
+                <div className="socialButton NoSelection" onClick={()=>this.toUrl(this.github)}><Icon name="github" /></div>
+                <div className="socialButton NoSelection" onClick={()=>this.toUrl(this.instagram)}><Icon name="instagram" /></div>
+                <div className="socialButton NoSelection" onClick={()=>this.toUrl(this.twitter)}><Icon name="twitter" /></div>
+                <div className="socialButton NoSelection" onClick={()=>this.toUrl(this.platziUrl)}><img src={platzi}/></div>
               </div>
             </div>
           </div>

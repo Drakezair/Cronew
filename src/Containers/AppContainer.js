@@ -106,12 +106,12 @@ class AppContainer extends Component{
           </Router>
         </div>
 
-        <span className="Sell-Button" >
+        <span className="Sell-Button NoSelection" >
           Vender
         </span>
 
         <div className="ShoppinCar-Container" >
-          <div className="ShoppinCar-Tag" ref='tag' onClick={()=>this.openShoppingCar()} >
+          <div className="ShoppinCar-Tag NoSelection" ref='tag' onClick={()=>this.openShoppingCar()} >
             <p>Carrito de Compras</p>
           </div>
           <div className="ShoppingList" ref='ShoppingList' >
