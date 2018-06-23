@@ -87,7 +87,7 @@ class Card extends Component {
           <div style={{padding: '0 5px', position: 'relative'}} >
             <h3 style={{marginBottom:2}} >Nombre del producto</h3>
             <span className="Card-Add"
-              onClick={()=>alert('hola-312')}
+              onClick={()=>alert('FUNCION PARA AÑADIR AL CARRITO')}
               onMouseEnter={()=>this.onButton()}
               onMouseLeave={()=>this.leaveButton()}
             ><Icon name="plus" /></span>

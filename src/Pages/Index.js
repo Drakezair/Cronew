@@ -22,6 +22,7 @@ class Index extends Component {
   github = "https://github.com/Drakezair";
   instagram = 'https://www.instagram.com/drakezair/';
   platziUrl = 'https://platzi.com/@Drakezair/';
+  youtube = 'https://www.youtube.com/channel/UC7WQRANCPZ1rKsjeO4jB6xg';
 
   // FUNCIONES
 
@@ -141,6 +142,7 @@ class Index extends Component {
                 <div className="socialButton NoSelection" onClick={()=>this.toUrl(this.github)}><Icon name="github" /></div>
                 <div className="socialButton NoSelection" onClick={()=>this.toUrl(this.instagram)}><Icon name="instagram" /></div>
                 <div className="socialButton NoSelection" onClick={()=>this.toUrl(this.twitter)}><Icon name="twitter" /></div>
+                <div className="socialButton NoSelection" onClick={()=>this.toUrl(this.youtube)}><Icon name="youtube" /></div>
                 <div className="socialButton NoSelection" onClick={()=>this.toUrl(this.platziUrl)}><img src={platzi}/></div>
               </div>
             </div>
