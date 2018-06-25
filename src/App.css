@@ -151,6 +151,11 @@ a:hover {
   animation-fill-mode: forwards;
 }
 
+.DropdownImg {
+  width: 778px;
+  height: 300px;
+}
+
 @keyframes dropdownComponent {
   from {
     width: 0
@@ -603,7 +608,7 @@ height: 470px;
 
 .ListContain {
   display: grid;
-  grid-template: 365px / 1fr 1fr 1fr;
+  grid-template: 365px / repeat(3,1fr);
   grid-auto-rows: 365px;
 }
 
@@ -807,7 +812,41 @@ height: 470px;
 
 /* RESPONSIVE  */
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 1400px) {
+  .ListContain {
+    grid-template-columns: repeat(2, 1fr)
+  }
+}
+
+@media screen and (max-width: 1060px) {
+
+  .DropdownImg {
+    width: 480px;
+    height: 270px;
+  }
+
+  .searchPage-Contain {
+    display: flex;
+    justify-content: center;
+  }
+
+  .filterContain {
+    display: none;
+  }
+
+  @keyframes dropdownComponent {
+    from {
+      width: 0
+    }
+    to{
+      width: 500px;
+      box-shadow: 0 0 10px #000;
+    }
+  }
+
+}
+
+@media screen and (max-width: 860px) {
   .Index-Grid {
     width: 710px;
   }
@@ -838,4 +877,9 @@ height: 470px;
   .Card-List-Index {
     width: 350px;
   }
+
+  .modalContain {
+    width: 700px;
+  }
+
 }

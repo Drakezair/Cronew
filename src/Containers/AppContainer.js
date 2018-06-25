@@ -91,131 +91,134 @@ handleResultSelect = (e, { result }) => this.setState({ value: result.title })
     })
 
     return(
-      <div >
-        <div className="MenuNav-Container" ref='container'
-          onMouseEnter={()=>{
-            this.refs.container.classList.remove('MenuContainClosed');
-            this.refs.menuContainer.classList.remove('MenuContainClosed');
-          }}
 
-          onMouseLeave={()=>{
-            if(window.scrollY > 45 && !this.state.searchFocus){
+      <Router basename="/cronew/" >
+        <div >
+          <div className="MenuNav-Container" ref='container'
+            onMouseEnter={()=>{
+              this.refs.container.classList.remove('MenuContainClosed');
+              this.refs.menuContainer.classList.remove('MenuContainClosed');
+            }}
+
+            onMouseLeave={()=>{
+              if(window.scrollY > 45 && !this.state.searchFocus){
+                this.refs.container.classList.add('MenuContainClosed');
+                this.refs.menuContainer.classList.add('MenuContainClosed');
+              }
+            }}
+          >
+            <div className="Menu-Container" ref="menuContainer" >
+              <h1 className="Menu-Text-Logo" >Cronew</h1>
+              <Search noResultsMessage='No hay resultados'
+                onSearchChange={(e,d)=>this.handleSearchChange(d)}
+                results={this.state.result}
+                fluid
+                onResultSelect={()=>window.location.href="/search"}
+                onFocus={(e,d)=>{
+                  this.setState({searchFocus: true})
+                }}
+                onBlur={(e,d)=>{
+                  this.setState({searchFocus: false})
+                }}
+              />
+              <div className="Menu-Buttons-Container" >
+                <a className="Menu-Button" >Crea tu cuenta</a>
+                <a className="Menu-Button" >Ingresa</a>
+              </div>
+            </div>
+            <span className="Dropdown-button"
+              onMouseEnter={()=> this.handleDropdown()}
+              onMouseOver={()=> console.log('hola')}
+            >Categorias <Icon name="caret down" size='large' /></span>
+            {
+              this.state.Dropdown ?
+                <div className="Dropdown-List"
+                  onMouseLeave={()=> this.handleDropdown()}
+                >
+                  <div className="dot" />
+
+
+                  <span
+                    className="Dropdown-Span"
+                    onMouseEnter={()=>this.setState({Tecnologia: true})}
+                    onMouseLeave={()=>this.setState({Tecnologia: false})}
+                  >
+                    Tecnologia
+                    <Icon name="caret right" size="large"/>
+                    {
+                      this.state.Tecnologia ? <Tecnologia /> : null
+                    }
+                  </span>
+                  <span
+                    className="Dropdown-Span"
+                    onMouseEnter={()=>this.setState({Deportes: true})}
+                    onMouseLeave={()=>this.setState({Deportes: false})}
+                  >
+                    Deportes
+                    <Icon name="caret right" size="large"/>
+                    {
+                      this.state.Deportes ? <Deportes /> : null
+                    }
+                  </span>
+                  <span
+                    className="Dropdown-Span"
+                    onMouseEnter={()=>this.setState({Musica: true})}
+                    onMouseLeave={()=>this.setState({Musica: false})}
+                  >
+                    Musica
+                    <Icon name="caret right" size="large"/>
+                    {
+                      this.state.Musica ? <Musica /> : null
+                    }
+                  </span>
+                </div>
+              :
+              null
+
+              /* <div className="Dropdown-Component"></div> */
+            }
+            <a>Ofertas de la semana</a>
+            <a>Tiendas oficiales</a>
+            <a>Tu historial</a>
+            <a>Tus Compras</a>
+          </div>
+
+          <div className="App-Container"
+            onClick={()=>{
+              this.setState({searchFocus: false})
               this.refs.container.classList.add('MenuContainClosed');
               this.refs.menuContainer.classList.add('MenuContainClosed');
-            }
-          }}
-        >
-          <div className="Menu-Container" ref="menuContainer" >
-            <h1 className="Menu-Text-Logo" >Cronew</h1>
-            <Search noResultsMessage='No hay resultados'
-              onSearchChange={(e,d)=>this.handleSearchChange(d)}
-              results={this.state.result}
-              fluid
-              onFocus={(e,d)=>{
-                this.setState({searchFocus: true})
-              }}
-              onBlur={(e,d)=>{
-                this.setState({searchFocus: false})
-              }}
-            />
-            <div className="Menu-Buttons-Container" >
-              <a className="Menu-Button" >Crea tu cuenta</a>
-              <a className="Menu-Button" >Ingresa</a>
-            </div>
-          </div>
-          <span className="Dropdown-button"
-            onMouseEnter={()=> this.handleDropdown()}
-            onMouseOver={()=> console.log('hola')}
-          >Categorias <Icon name="caret down" size='large' /></span>
-          {
-            this.state.Dropdown ?
-              <div className="Dropdown-List"
-                onMouseLeave={()=> this.handleDropdown()}
-              >
-                <div className="dot" />
+            }}
+          >
 
-
-                <span
-                  className="Dropdown-Span"
-                  onMouseEnter={()=>this.setState({Tecnologia: true})}
-                  onMouseLeave={()=>this.setState({Tecnologia: false})}
-                >
-                  Tecnologia
-                  <Icon name="caret right" size="large"/>
-                  {
-                    this.state.Tecnologia ? <Tecnologia /> : null
-                  }
-                </span>
-                <span
-                  className="Dropdown-Span"
-                  onMouseEnter={()=>this.setState({Deportes: true})}
-                  onMouseLeave={()=>this.setState({Deportes: false})}
-                >
-                  Deportes
-                  <Icon name="caret right" size="large"/>
-                  {
-                    this.state.Deportes ? <Deportes /> : null
-                  }
-                </span>
-                <span
-                  className="Dropdown-Span"
-                  onMouseEnter={()=>this.setState({Musica: true})}
-                  onMouseLeave={()=>this.setState({Musica: false})}
-                >
-                  Musica
-                  <Icon name="caret right" size="large"/>
-                  {
-                    this.state.Musica ? <Musica /> : null
-                  }
-                </span>
-              </div>
-            :
-            null
-
-            /* <div className="Dropdown-Component"></div> */
-          }
-          <a>Ofertas de la semana</a>
-          <a>Tiendas oficiales</a>
-          <a>Tu historial</a>
-          <a>Tus Compras</a>
-        </div>
-
-        <div className="App-Container"
-          onClick={()=>{
-            this.setState({searchFocus: false})
-            this.refs.container.classList.add('MenuContainClosed');
-            this.refs.menuContainer.classList.add('MenuContainClosed');
-          }}
-        >
-          <Router>
             <Switch>
               <Route exact path="/" component={Index} />
               <Route path="/search" component={SearchPage} />
             </Switch>
-          </Router>
-        </div>
-
-        <span className="Sell-Button NoSelection" >
-          Vender
-        </span>
-
-        <div className="ShoppinCar-Container" >
-          <div className="ShoppinCar-Tag NoSelection" ref='tag' onClick={()=>this.openShoppingCar()} >
-            <p>Carrito de Compras</p>
           </div>
-          <div className="ShoppingList" ref='ShoppingList' >
-            <div className="listCar">
-              <Item />
-              <Item />
-              <Item />
+
+          <span className="Sell-Button NoSelection" >
+            Vender
+          </span>
+
+          <div className="ShoppinCar-Container" >
+            <div className="ShoppinCar-Tag NoSelection" ref='tag' onClick={()=>this.openShoppingCar()} >
+              <p>Carrito de Compras</p>
             </div>
-            <div className="checkList">
-              Total: 1.700$
-              <span>Comprar</span>
+            <div className="ShoppingList" ref='ShoppingList' >
+              <div className="listCar">
+                <Item />
+                <Item />
+                <Item />
+              </div>
+              <div className="checkList">
+                Total: 1.700$
+                <span>Comprar</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Router>
     );
   }
 

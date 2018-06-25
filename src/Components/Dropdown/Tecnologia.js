@@ -33,7 +33,7 @@ class Tecnologia extends Component {
             </List>
           </div>
           <div style={{gridColumn: '1 / span 3'}} >
-            <img src={require('../../assets/tecnologia.jpeg')} style={{width: 778,height: 300}} />
+            <img src={require('../../assets/tecnologia.jpeg')} className="DropdownImg" />
           </div>
         </div>
       </div>

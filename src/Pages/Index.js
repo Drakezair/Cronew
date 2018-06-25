@@ -33,7 +33,11 @@ class Index extends Component {
     var element = this.refs.ListView;
     var totalWidth = element.scrollWidth;
     var position = element.scrollLeft;
-    var nextPosition= (totalWidth / 3) + position;
+    if(window.innerWidth >= 860){
+      var nextPosition= (totalWidth / 3) + position;
+    }else{
+      var nextPosition= (totalWidth / 6) + position;
+    }
     element.scroll({
       left: nextPosition ,
       behavior: 'smooth'
@@ -44,7 +48,11 @@ class Index extends Component {
     var element = this.refs.ListView;
     var totalWidth = element.scrollWidth;
     var position = element.scrollLeft;
-    var backPosition = position - (totalWidth / 3);
+    if(window.innerWidth >= 860){
+      var backPosition = position - (totalWidth / 3);
+    }else{
+      var backPosition = position - (totalWidth / 6);
+    }
     element.scroll({
       left: backPosition ,
       behavior: 'smooth'
