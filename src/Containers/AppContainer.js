@@ -92,7 +92,7 @@ handleResultSelect = (e, { result }) => this.setState({ value: result.title })
 
     return(
 
-      <Router basename="/cronew/" >
+      <Router basename="/cronew" >
         <div >
           <div className="MenuNav-Container" ref='container'
             onMouseEnter={()=>{
@@ -113,7 +113,7 @@ handleResultSelect = (e, { result }) => this.setState({ value: result.title })
                 onSearchChange={(e,d)=>this.handleSearchChange(d)}
                 results={this.state.result}
                 fluid
-                onResultSelect={()=>window.location.href="/search"}
+                onResultSelect={()=>window.location.href ="cronew/search"}
                 onFocus={(e,d)=>{
                   this.setState({searchFocus: true})
                 }}
